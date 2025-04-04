@@ -1,13 +1,19 @@
 {
   "name": "backend-project-2",
   "version": "1.0.0",
-  "description": "",
+  "description": "Full stack todo app which uses nodejs expressjs backend sqlite db and jwt authentication",
   "main": "index.js",
+  "type" : "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev" : "node --watch --env-file=.env ./src/server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs"
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2"
+  }
 }
