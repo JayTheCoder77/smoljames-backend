@@ -43,6 +43,27 @@ router.post('/login',(req,res) => {
     // but we get the encrypted password which means we cannot compare it to the one which the user entered
     // so what we can do is again one way encrypt the password the user just entered 
 
+    const {username,password} = req.body
+
+    try {
+        const getUser = db.prepare(`
+                SELECT * FROM users WHERE username = ?
+            `)
+
+        // if we cannot find user asscoiated with uesrname return out of function
+        const user = getUser.get(username)
+        if(!user) {return res.status(404).send({message : 'user not found'})}
+
+        // compares our password with hashed password
+        const passwordIsValid = bcrypt.compareSync(password, user.password)
+        // if password doesnt match return out
+        if(!passwordIsValid) {return res.status(401).send({message : "Invalid Password"})}
+
+        // if all these passed we have successfull auth
+    } catch (error) {
+        console.log(error.message);
+        res.sendStatus(503)        
+    }
 
 })
 

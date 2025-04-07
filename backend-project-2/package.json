@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "Full stack todo app which uses nodejs expressjs backend sqlite db and jwt authentication",
   "main": "index.js",
-  "type" : "module",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev" : "node --watch --env-file=.env ./src/server.js"
+    "dev": "node --watch --env-file=.env ./src/server.js"
   },
   "keywords": [],
   "author": "",
